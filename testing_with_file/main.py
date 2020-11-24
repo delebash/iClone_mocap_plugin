@@ -18,7 +18,7 @@ from PySide2 import *
 from PySide2.QtCore import *
 
 from BoneData import *
-from generate_iclone_from_left_hand_json_file import *
+from generate_iclone_from_left_hand_stream import *
 
 mocap_manager = RLPy.RGlobal.GetMocapManager()
 avatar = None

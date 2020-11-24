@@ -37,6 +37,7 @@ class Worker(QtCore.QObject):
                 sio.emit('room', myroom)
                 self.message.emit("Joined room  " + myroom)
 
+
             @sio.on('message')
             def message(string):
                 self.message.emit(string)

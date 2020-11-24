@@ -160,29 +160,29 @@ def update_new_pose(pose_pts_arr, mocap_pts_arr):
     group_num = 5
     pose_pts_arr = np.array(pose_pts_arr)
     for i in range(group_num):
-        pose_range = pose_pts_ind[0]
-        pose_pts = pose_pts_arr[pose_range[0]:pose_range[1] + 1]
-        pose_range_num = pose_range[1] - pose_range[0] + 1
+        pose_range = pose_pts_ind[i]
+        pose_pts = pose_pts_arr[pose_range[0]:pose_range[1]+1]
+        pose_range_num = pose_range[1]-pose_range[0]+1
 
         mocap_pts_range = mocap_pts_ind[i]
-        mocap_pts = mocap_pts_arr[mocap_pts_range[0]:mocap_pts_range[1] + 1]  # one finger mocap data
+        mocap_pts = mocap_pts_arr[mocap_pts_range[0]:mocap_pts_range[1]+1] # one finger mocap data
 
         vs = get_vecs(mocap_pts)
         poses = get_pose(vs)
 
-        # left hand
-        poses = np.array(poses)
-        poses = -1 * poses
+        #left hand
+        poses=np.array(poses)
+        poses = -1*poses
 
         pose_start = pose_pts_ind[i]
-        if (pose_start[0] == 40):  # thumb
-            pose_pts_arr[pose_start[0]] = pose_pts_arr[pose_start[0]] + np.array([0, 0, 0, 0, poses[0], 0])
-            pose_pts_arr[pose_start[0] + 1] = pose_pts_arr[pose_start[0] + 1] + np.array([0, 0, 0, 0, poses[1], 0])
-            pose_pts_arr[pose_start[0] + 2] = pose_pts_arr[pose_start[0] + 2] + np.array([0, 0, 0, 0, poses[2], 0])
+        if(pose_start[0]==40): #thumb
+            pose_pts_arr[pose_start[0]] = pose_pts_arr[pose_start[0]]+np.array([0, 0, 0, 0, poses[0],0])
+            pose_pts_arr[pose_start[0] + 1] = pose_pts_arr[pose_start[0] + 1]+np.array([0, 0, 0, 0, poses[1],0])
+            pose_pts_arr[pose_start[0] + 2] = pose_pts_arr[pose_start[0] + 2]+np.array([0, 0, 0, 0, poses[2],0])
         else:
-            pose_pts_arr[pose_start[0]] = pose_pts_arr[pose_start[0]] + np.array([0, 0, 0, 0, 0, poses[0]])
-            pose_pts_arr[pose_start[0] + 2] = pose_pts_arr[pose_start[0] + 2] + np.array([0, 0, 0, 0, 0, poses[1]])
-            pose_pts_arr[pose_start[0] + 3] = pose_pts_arr[pose_start[0] + 3] + np.array([0, 0, 0, 0, 0, poses[2]])
+            pose_pts_arr[pose_start[0]] = pose_pts_arr[pose_start[0]]+np.array([0, 0, 0, 0, 0,poses[0]])
+            pose_pts_arr[pose_start[0]+2] = pose_pts_arr[pose_start[0]+2]+np.array([0, 0, 0, 0, 0,poses[1]])
+            pose_pts_arr[pose_start[0]+3] = pose_pts_arr[pose_start[0]+3]+np.array([0, 0, 0, 0, 0,poses[2]])
 
     return pose_pts_arr
 

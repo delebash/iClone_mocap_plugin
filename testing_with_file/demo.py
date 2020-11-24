@@ -1,7 +1,7 @@
 from generate_iclone_from_left_hand_json import *
 
 #main function
-new_pose = json2iclon(tpose, './data/peace.json')
+new_pose = json2iclon(tpose, './data/testy.json')
 
 #output new pose to txt file
 f = open("new_pose.txt", 'a')
